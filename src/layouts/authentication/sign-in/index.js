@@ -29,8 +29,24 @@ import BasicLayout from "layouts/authentication/components/BasicLayout";
 
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
+import { instance } from "../../../service/service"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Basic() {
+
+  const history = useNavigate()
+
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleLogin = () => {
+    history('/trang-chu')
+
+    // const url = `http://34.124.188.122:8084/api/v1/account/login?username=${username}&password=${password}`
+    // instance.get(url).then(el => {
+    // })
+  }
   return (
     <BasicLayout image={bgImage}>
       <Card>
@@ -52,15 +68,17 @@ function Basic() {
         <MDBox pt={4} pb={3} px={3}>
           <MDBox component="form" role="form">
             <MDBox mb={2}>
-              <MDInput type="text" label="Tên đăng nhập" fullWidth />
+              <MDInput type="text" label="Tên đăng nhập" fullWidth onChange={evt => {
+                setUsername(evt.target.value)
+              }} />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="password" label="Mật khẩu" fullWidth />
+              <MDInput type="password" label="Mật khẩu" fullWidth onChange={evt => {
+                setPassword(evt.target.value)
+              }}/>
             </MDBox>
             <MDBox mt={4} mb={1}>
-              <MDButton variant="gradient" color="info" fullWidth onClick={() => {
-                alert("okok")
-              }}>
+              <MDButton variant="gradient" color="info" fullWidth onClick={handleLogin}>
                 Đăng nhập
               </MDButton>
             </MDBox>
