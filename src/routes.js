@@ -37,8 +37,8 @@ Coded by www.creative-tim.com
 
 // Material Dashboard 2 React layouts
 import Dashboard from "layouts/trang-chu";
-import Tables from "layouts/bieu-do-theo-ngay";
-import Notifications from "layouts/bieu-do-theo-tuan";
+import Tables from "layouts/bieu-do-theo-tuan";
+import Notifications from "layouts/bieu-do-theo-ngay";
 import SignIn from "layouts/authentication/sign-in";
 
 // @mui icons
@@ -56,18 +56,18 @@ const routes = [
   {
     type: "collapse",
     name: "Biểu đồ đánh giá ngày",
-    key: "bieu-do-theo-ngay",
+    key: "bieu-do-theo-ngay-",
     icon: <Icon fontSize="small">dashboard</Icon>,
-    route: "/bieu-do-theo-ngay",
-    component: <Tables />,
+    route: "/bieu-do-theo-ngay-",
+    component: <Notifications />,
   },
   {
     type: "collapse",
     name: "Biểu đồ đánh giá tuần",
-    key: "bieu-do-theo-tuan",
+    key: "bieu-do-theo-ngay",
     icon: <Icon fontSize="small">dashboard</Icon>,
-    route: "/bieu-do-theo-tuan",
-    component: <Notifications />,
+    route: "/bieu-do-theo-ngay",
+    component: <Tables />,
   },
   {
     type: "collapse",

@@ -91,7 +91,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
   const handleOpenMenu = (event) => setOpenMenu(event.currentTarget);
   const handleCloseMenu = () => setOpenMenu(false);
 
-  // Render the bieu-do-theo-tuan menu
+  // Render the bieu-do-theo-ngay menu
   const renderMenu = () => (
     <Menu
       anchorEl={openMenu}
@@ -161,7 +161,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
       {/*          variant="contained"*/}
       {/*          onClick={handleOpenMenu}*/}
       {/*        >*/}
-      {/*          <Icon sx={iconsStyle}>bieu-do-theo-tuan</Icon>*/}
+      {/*          <Icon sx={iconsStyle}>bieu-do-theo-ngay</Icon>*/}
       {/*        </IconButton>*/}
       {/*        {renderMenu()}*/}
       {/*      </MDBox>*/}

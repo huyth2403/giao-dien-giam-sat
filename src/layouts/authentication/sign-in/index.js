@@ -28,7 +28,7 @@ import MDButton from "components/MDButton";
 import BasicLayout from "layouts/authentication/components/BasicLayout";
 
 // Images
-import bgImage from "assets/images/bg-sign-in-basic.jpeg";
+import bgImage from "assets/images/bg_login.jpeg";
 import { instance } from "../../../service/service"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -48,7 +48,8 @@ function Basic() {
     // })
   }
   return (
-    <BasicLayout image={bgImage}>
+    <>
+      <BasicLayout image={bgImage}>
       <Card>
         <MDBox
           variant="gradient"
@@ -86,6 +87,7 @@ function Basic() {
         </MDBox>
       </Card>
     </BasicLayout>
+    </>
   );
 }
 

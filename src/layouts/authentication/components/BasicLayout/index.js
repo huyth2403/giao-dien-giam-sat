@@ -47,7 +47,24 @@ function BasicLayout({ image, children }) {
           backgroundRepeat: "no-repeat",
         }}
       />
-      <MDBox px={1} width="100%" height="100vh" mx="auto">
+      <h1 style={{
+      position: 'relative',
+      color: 'white',
+      textAlign: 'center',
+      marginTop: '5vh'}
+      }>KHOA VÔ TUYẾN ĐIỆN TỬ</h1>
+      <h2 style={{
+        position: 'relative',
+        color: 'white',
+        textAlign: 'center'}
+      }>BỘ MÔN THÔNG TIN</h2>
+      <h2 style={{
+        position: 'relative',
+        color: 'white',
+        textAlign: 'center'}
+      }>GIAO DIỆN GIÁM SÁT CẢNH BÁO TỪ XA CHO PHÒNG THÍ NGHIỆM THỰC HÀNH</h2>
+
+      <MDBox px={1} width="100%" height="95vh" mx="auto">
         <Grid container spacing={1} justifyContent="center" alignItems="center" height="100%">
           <Grid item xs={11} sm={9} md={5} lg={4} xl={3}>
             {children}

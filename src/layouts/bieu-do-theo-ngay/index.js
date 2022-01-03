@@ -13,24 +13,29 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+import { useState } from "react";
+
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-import ReactECharts from 'echarts-for-react'
-
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
+import MDAlert from "components/MDAlert";
+import MDButton from "components/MDButton";
+import MDSnackbar from "components/MDSnackbar";
 
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
+import ReactECharts from "echarts-for-react";
+import { option } from "./data";
 
 const nhietDo = {
   title: {
-    show: false,
+    show: true,
     text: 'Nhiệt độ'
   },
   tooltip: {
@@ -101,7 +106,7 @@ const nhietDo = {
 };
 const doAm = {
   title: {
-    show: false,
+    show: true,
     text: 'Độ ẩm'
   },
   tooltip: {
@@ -180,40 +185,11 @@ const doAm = {
   ]
 };
 
-function Tables() {
+function Notifications() {
+
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <MDBox pb={5}>
-        <Grid container spacing={6}>
-          <Grid item xs={12}>
-            <Card>
-              <MDBox
-                mx={2}
-                mt={-3}
-                py={3}
-                px={2}
-                variant="gradient"
-                bgColor="info"
-                borderRadius="lg"
-                coloredShadow="info"
-              >
-                <MDTypography variant="h6" color="white">
-                  Biểu đồ nhiệt độ
-                </MDTypography>
-              </MDBox>
-              <MDBox pt={3}>
-                <ReactECharts
-                  option={nhietDo}
-                  notMerge={true}
-                  lazyUpdate={true}
-                  theme={"theme_name"}
-                />
-              </MDBox>
-            </Card>
-          </Grid>
-        </Grid>
-      </MDBox>
       <MDBox pb={3}>
         <Grid container spacing={6}>
           <Grid item xs={12}>
@@ -229,15 +205,16 @@ function Tables() {
                 coloredShadow="info"
               >
                 <MDTypography variant="h6" color="white">
-                  Biểu đồ độ ẩm
+                  Biểu đồ đánh giá theo ngày
                 </MDTypography>
               </MDBox>
               <MDBox pt={3}>
                 <ReactECharts
-                  option={doAm}
+                  option={option}
                   notMerge={true}
                   lazyUpdate={true}
                   theme={"theme_name"}
+                  style={{height: '80vh', width: '100%'}}
                 />
               </MDBox>
             </Card>
@@ -249,4 +226,4 @@ function Tables() {
   );
 }
 
-export default Tables;
+export default Notifications;
