@@ -41,8 +41,12 @@ function Basic() {
   const [password, setPassword] = useState('')
 
   const handleLogin = () => {
-    history('/trang-chu')
 
+    if (username === 'admin' && password === '12345') {
+      history('/trang-chu')
+    } else {
+      alert("Tên tài khoản hoặc mật khẩu không chính xác!")
+    }
     // const url = `http://34.124.188.122:8084/api/v1/account/login?username=${username}&password=${password}`
     // instance.get(url).then(el => {
     // })

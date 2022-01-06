@@ -94,20 +94,25 @@ function Dashboard() {
               </MDBox>
               <MDBox pt={3}>
                 <Grid container spacing={6}>
-                  <Grid item lg={8}>
+                  <Grid item lg={8} style={{
+                    width: '100%'
+                  }}>
                     <img style={{
                       width: "100%"
                     }} src={getImage()} alt="" />
                   </Grid>
                   <Grid item lg={4} style={{
                     display: 'flex',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    width: '100%',
+                    justifyContent: 'center',
+                    marginBottom: '10px'
                   }}>
                     <div>
-                      <h3><b>{dateFormat(currentDate)}</b></h3>
-                      <h3><b>Nhiệt độ hiện tại: {nhietDo + "°C"}</b></h3>
-                      <h3><b>Độ ẩm hiện tại: {doAm + "%"}</b></h3>
-                      <h3><b>Nguồn: AC</b></h3>
+                      <h2><b>{dateFormat(currentDate)}</b></h2>
+                      <h2><b>Nhiệt độ hiện tại: {nhietDo + "°C"}</b></h2>
+                      <h2><b>Độ ẩm hiện tại: {doAm + "%"}</b></h2>
+                      <h2><b>Nguồn: AC</b></h2>
                     </div>
                   </Grid>
                 </Grid>
