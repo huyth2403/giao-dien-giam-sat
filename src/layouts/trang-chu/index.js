@@ -45,6 +45,7 @@ import MDTypography from "../../components/MDTypography";
 import { instance } from "../../service/service";
 
 let interval = null;
+let intervalTime = null;
 
 function Dashboard() {
 
@@ -52,14 +53,31 @@ function Dashboard() {
   const [nhietDo, setNhietDo] = useState(0);
   const [doAm, setDoAm] = useState(0);
 
+  const init = () => {
+    instance({
+      method: 'get',
+      url: '/alarm/get-all-heart-beat-current-day?token=Y3ODkwIiwi'
+    }).then(resp => {
+      const data = resp.data
+      if (data?.data?.length > 0) {
+        const result = data?.data[data?.data?.length - 1]
+        setNhietDo(result.temperature)
+        setDoAm(result.humidity)
+      }
+    })
+  }
+
   useEffect(() => {
-    setInterval(() => {
+    intervalTime = setInterval(() => {
       setCurrentDate(new Date());
-      setDoAm(getRandom(0, 100));
-      setNhietDo(getRandom(0, 100));
-    }, 1000);
+    }, 1000)
+    init()
+    interval = setInterval(() => {
+      init()
+    }, 60000);
     return () => {
       clearInterval(interval);
+      clearInterval(intervalTime)
     };
   }, []);
 
