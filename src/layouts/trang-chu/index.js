@@ -42,6 +42,8 @@ import { dateFormat, getRandom } from "../../utils/Common";
 import Card from "@mui/material/Card";
 import MDTypography from "../../components/MDTypography";
 
+import { instance } from "../../service/service";
+
 let interval = null;
 
 function Dashboard() {

@@ -42,7 +42,7 @@ function Tables() {
     xAxis: [
       {
         type: 'category',
-        data: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'CN'],
+        data: ['CN', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'],
         axisPointer: {
           type: 'shadow'
         }
@@ -119,7 +119,7 @@ function Tables() {
     xAxis: [
       {
         type: 'category',
-        data: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'CN'],
+        data: ['CN', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'],
         axisPointer: {
           type: 'shadow'
         }
@@ -167,77 +167,82 @@ function Tables() {
     ]
   }
 
-  useEffect(() => {
-    interval = setInterval(() => {
-      instance({
-        method: 'get',
-        url: '/alarm/get-all-heart-beat-current-week?token=Y3ODkwIiwi'
-      }).then(resp => {
-        const dataChart = [[], [], [], [], [], [], []]
-        if (resp?.data?.data?.length > 0) {
-          let flag = resp?.data?.data[0].createdDate.split('T')[0]
-          let i = 0
-          resp.data.data.forEach(el => {
-            if (flag !== el.createdDate.split('T')[0]) {
-              dataChart[i+1].push(el)
-              flag = el.createdDate.split('T')[0]
-              i++
-            } else {
-              dataChart[i].push(el)
-            }
-          })
-          const dataView = []
-          const dataViewTemp = []
-
-          for(let j = 0; j < dataChart.length; j++) {
-            if (dataChart[j].length > 0) {
-              let min = dataChart[j][0].humidity, max = 0;
-              let min1 = dataChart[j][0].temperature, max1 = 0;
-              dataChart[j].forEach(el => {
-                // do am
-                if (min > el.humidity) {
-                  min = el.humidity
-                }
-                if (max < el.humidity) {
-                  max = el.humidity
-                }
-
-                // nhiet do
-                if (min1 > el.temperature) {
-                  min1 = el.temperature
-                }
-                if (max1 < el.temperature) {
-                  max1 = el.temperature
-                }
-              })
-              dataView.push({
-                min,
-                max,
-                avg: (min + max) / 2
-              })
-              dataViewTemp.push({
-                min: min1,
-                max: max1,
-                avg: (min1 + max1) / 2
-              })
-            } else {
-              dataView.push({
-                min: 0,
-                max: 0,
-                avg: 0
-              })
-              dataViewTemp.push({
-                min: 0,
-                max: 0,
-                avg: 0
-              })
-            }
+  const init = () => {
+    instance({
+      method: 'get',
+      url: '/alarm/get-all-heart-beat-current-week?token=Y3ODkwIiwi'
+    }).then(resp => {
+      const dataChart = [[], [], [], [], [], [], []]
+      if (resp?.data?.data?.length > 0) {
+        let flag = resp?.data?.data[0].createdDate.split('T')[0]
+        let i = 0
+        resp.data.data.forEach(el => {
+          if (flag !== el.createdDate.split('T')[0]) {
+            dataChart[i+1].push(el)
+            flag = el.createdDate.split('T')[0]
+            i++
+          } else {
+            dataChart[i].push(el)
           }
-          setDataDoAm(dataView)
-          setDataNhietDo(dataViewTemp)
+        })
+        const dataView = []
+        const dataViewTemp = []
+
+        for(let j = 0; j < dataChart.length; j++) {
+          if (dataChart[j].length > 0) {
+            let min = dataChart[j][0].humidity, max = 0;
+            let min1 = dataChart[j][0].temperature, max1 = 0;
+            dataChart[j].forEach(el => {
+              // do am
+              if (min > el.humidity) {
+                min = el.humidity
+              }
+              if (max < el.humidity) {
+                max = el.humidity
+              }
+
+              // nhiet do
+              if (min1 > el.temperature) {
+                min1 = el.temperature
+              }
+              if (max1 < el.temperature) {
+                max1 = el.temperature
+              }
+            })
+            dataView.push({
+              min,
+              max,
+              avg: (min + max) / 2
+            })
+            dataViewTemp.push({
+              min: min1,
+              max: max1,
+              avg: (min1 + max1) / 2
+            })
+          } else {
+            dataView.push({
+              min: 0,
+              max: 0,
+              avg: 0
+            })
+            dataViewTemp.push({
+              min: 0,
+              max: 0,
+              avg: 0
+            })
+          }
         }
-      });
-    }, 10000)
+        setDataDoAm(dataView)
+        setDataNhietDo(dataViewTemp)
+      }
+    });
+  }
+
+  useEffect(() => {
+    init()
+    interval = setInterval(() => {
+      init()
+    }, 60000)
     return () => clearInterval(interval)
   }, [])
 
