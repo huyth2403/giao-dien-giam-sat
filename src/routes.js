@@ -56,17 +56,17 @@ const routes = [
   {
     type: "collapse",
     name: "Biểu đồ đánh giá ngày",
-    key: "bieu-do-theo-ngay-",
+    key: "bieu-do-theo-ngay",
     icon: <Icon fontSize="small">dashboard</Icon>,
-    route: "/bieu-do-theo-ngay-",
+    route: "/bieu-do-theo-ngay",
     component: <Notifications />,
   },
   {
     type: "collapse",
     name: "Biểu đồ đánh giá tuần",
-    key: "bieu-do-theo-ngay",
+    key: "bieu-do-theo-tuan",
     icon: <Icon fontSize="small">dashboard</Icon>,
-    route: "/bieu-do-theo-ngay",
+    route: "/bieu-do-theo-tuan",
     component: <Tables />,
   },
   {

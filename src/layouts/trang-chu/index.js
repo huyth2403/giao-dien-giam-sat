@@ -27,13 +27,7 @@ import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
 import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
 
-// Data
-import reportsBarChartData from "layouts/trang-chu/data/reportsBarChartData";
-import reportsLineChartData from "layouts/trang-chu/data/reportsLineChartData";
-
 // Dashboard components
-import Projects from "layouts/trang-chu/components/Projects";
-import OrdersOverview from "layouts/trang-chu/components/OrdersOverview";
 import BG_ACTIVE from "../../assets/images/bg-home-active.jpeg";
 import BG_DEACTIVE from "../../assets/images/bg-home.jpeg";
 import BG_WARNING from "../../assets/images/warning.jpeg";
