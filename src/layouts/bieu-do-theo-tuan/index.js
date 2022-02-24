@@ -174,16 +174,9 @@ function Tables() {
     }).then(resp => {
       const dataChart = [[], [], [], [], [], [], []]
       if (resp?.data?.data?.length > 0) {
-        let flag = resp?.data?.data[0].createdDate.split('T')[0]
-        let i = 0
         resp.data.data.forEach(el => {
-          if (flag !== el.createdDate.split('T')[0]) {
-            dataChart[i+1].push(el)
-            flag = el.createdDate.split('T')[0]
-            i++
-          } else {
-            dataChart[i].push(el)
-          }
+          const currentDay = new Date(Date.parse(el.createdDate)).getDay()-1
+            dataChart[currentDay].push(el)
         })
         const dataView = []
         const dataViewTemp = []
